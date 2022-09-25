@@ -1,0 +1,52 @@
+1. for(auto &it : vec) is very fast than for(auto it : vec) coz of referening
+2. Rearrage array such that no two adjecent element are equal.
+	-> no element should be greater than half.
+	-> sort elements than align sorted index like -> eg. 1 6 2 7 3 8 4 9 5 10
+3. check 2's power -> n & (n - 1) == 0
+4. count set bits 
+	-> int ans = 0; 
+	   while(n) { 
+		n = n & (n - 1); 
+		ans ++; 
+	   } 
+	   print(ans);	
+5. in building adj for topological sorting, if possible edge is messy , build not possible edge
+	and reverse it.
+6. Consider sliding window dynamic compression best way in case of subarray questions.
+7. #pragma GCC target("popcnt") for bitset operation faster
+8. vector1.swap(vector2) is O(1) coz of reference swaping ->
+	 https://codeforces.com/contest/1620/submission/139768900
+9. for question like -> common max lenth subtring in vector of strings ["aaabbaa", "avvss", "asfff"]
+	or similiar, think of reverse binary search first :)
+10. For finding the min of max or max of min related problem think of reverse binary search first :)
+11. Merging many sets in  amortized. If you have some sets and you often need to merge some 
+	of them, you can do it in naive way but in such manner that you always move elements from
+	the smaller one to the larger. Thus every element will be moved only  times since its new
+	set always will be at least twice as large as the old one. eg. -> https://codeforces.com/contest/1620/submission/139768900
+12. sometimes in bitwise question reducing the given state to besst possible form is likely to solve the problem.
+	eg. https://www.codechef.com/START21C/problems/ANDORUNI
+13. bitwise operator priority
+14. shortest common substring of two string is of one lenth only.
+15. some dp assumed question can be solved with bfs only-> jump game 4
+16. https://leetcode.com/contest/weekly-contest-276/problems/maximum-running-time-of-n-computers/ -> brilliant question
+17. focus on first half on palindrome /find-palindrome-with-fixed-length/
+18. when thought go in direction of recursion think about stack as well
+19. While solving DP, check if DP table can be sorten or input can be modified to perform DP table.
+20. While solving code on doc check if doc auto complete is turned off.
+21. if question is min of max or max of min, think of binary search on answer.
+22. Never Forgot about Reminder Theorem https://codeforces.com/contest/1690/problem/E
+23. never forget, unordered map can transform your code to O(n) from O(nlogn) if every way is blocked.
+24. always thing greedy before DP. 100/-
+25. if no optimised approach is strike, think about nested loop limitations, like
+	for i 1-n
+		for j 1-n
+	cam be converted to
+	for i 1-n
+		for j i-i+30
+	etc...
+	eg. https://codeforces.com/contest/1703/problem/G
+26. bits(num1 OR num2) + bits(num1 AND num2) = bits(num1) + bits(num2)
+27. palindrome -> expand around center, take 2 len then 3 len ... -> find logic around len expansion
+28. . stands for multiplication: beware
+29. choose x such that sum of abs(ai - x) over all i from 1 to n is minimized is x = a[n / 2]
+30. check if int answer = 0 or int answer = INT_MIN;
