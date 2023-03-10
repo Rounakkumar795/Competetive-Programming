@@ -1,0 +1,476 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// //check edges from each node
+// int main(){
+// 	int n,m;
+// 	cin>>n>>m;
+// 	vector<vector<int>>adjm(n+1);
+
+// 	for(int i=0;i<m;i++){
+//       int x,y;
+//       cin>>x>>y;
+//       adjm[x].push_back(y);
+//       adjm[y].push_back(x);
+// 	}
+    
+//     for(int i=1;i<n+1;i++){
+//      cout<<i<<"-> ";
+//      for(auto it: adjm[i]){
+//      	cout<<it<<" ";
+//      }
+//      cout<<endl;
+//     }
+// }
+
+// //BFS traversal o(v+E)
+// const int N= 1e5+2;
+// bool vis[N];
+// vector<int>adj[N];
+// int main(){
+// 	for(int i=0;i<N;i++){
+// 		vis[i]=0;
+// 	}
+// 	int n,m;
+// 	cin>>n>>m;
+// 	for(int i=0;i<m;i++){
+// 		int x,y;
+// 		cin>>x>>y;
+// 		adj[x].push_back(y);
+// 		adj[y].push_back(x);
+// 	}
+// 	queue<int>q;
+//     q.push(1);
+//     vis[1]=1;
+//     while(!q.empty()){
+//     	int node=q.front();
+//     	q.pop();
+//     	cout<<node<<" ";
+//     	for(auto it: adj[node]){
+//     		if(!vis[it]){
+//     		q.push(it);
+//     		vis[it]=1;
+//     	}
+//     	}
+//     }
+// }
+
+
+//DFS traversal
+// const int N= 1e5+2;
+// bool vis[N];
+// vector<int>adj[N];
+
+// void dfs(int node){
+// 	//preorder
+// 	//cout<<node<<" ";
+// 	vis[node]=1;
+
+// 	//inorder
+// 	for(auto it: adj[node]){
+// 		if(!vis[it]){
+// 			dfs(it);
+// 		}
+// 	}
+// 	//postorder
+// 	// cout<<node<< " ";
+// }
+// int main(){
+// 	for(int i=0;i<N;i++){
+// 		vis[i]=0;
+// 	}
+// 	int n,m;
+// 	cin>>n>>m;
+// 	for(int i=0;i<m;i++){
+// 		int x,y;
+// 		cin>>x>>y;
+// 		adj[x].push_back(y);
+// 		adj[y].push_back(x);
+// 	}
+// 	dfs(1);
+// }	
+
+
+//     //Topological sort
+//     const int N= 1e5+2;
+//     // bool vis[N];
+    
+//     vector<int>adj[N];
+    
+//     int main(){
+// 	int n,m;
+// 	cin>>n>>m;
+// 	vector<int>indegre(n,0);
+// 	for(int i=0;i<m;i++){
+// 		int x,y;
+// 		cin>>x>>y;
+// 		adj[x].push_back(y);
+// 		indegre[y]++;
+// 	}
+// 	queue<int>q;
+// 	for(int i=0;i<n;i++){
+// 		if(indegre[i]==0){
+// 			q.push(i);
+// 		}
+// 	}
+// 	while(!q.empty()){
+// 		int node=q.front();
+//         q.pop();
+//         cout<<node<<" ";
+//         for(auto it: adj[node]){
+//         	indegre[it]--;
+//         	if(indegre[it]==0){
+//         		q.push(it);
+//         	}
+//         }
+// 	}
+
+// }
+
+
+// //detect cycle in undirected graph
+// const int N=1e5+2;
+// bool iscycle(int index,vector<vector<int>>&adj,vector<bool>&visited,int parent){
+// 	visited[index]=true;
+// 	for(auto it: adj[index]){
+// 		if(it!=parent){
+// 			if(visited[it]){
+// 				return true;
+// 			}
+// 			if(!visited[it] && iscycle(it,adj,visited,index)){
+// 				return true;
+// 			}
+// 		}
+// 	}
+// 	return false;
+// }
+// int main(){
+// 	int n,m;
+// 	cin>>n>>m;
+// 	vector<vector<int>>adj(n);
+// 	for(int i=0;i<m;i++){
+// 		int x,y;
+// 		cin>>x>>y;
+// 		adj[x].push_back(y);
+// 		adj[y].push_back(x);
+// 	}
+// 	bool cycle=false;
+// 	vector<bool>visited(n,false);
+// 	for(int i=0;i<n;i++){
+// 		if(!visited[i] && iscycle(i,adj,visited,-1)){
+// 			cycle= true;
+// 		}
+// 	}
+// 	if(cycle){
+// 		cout<<"cycle present"<<endl;
+// 	}else{
+// 		cout<<"cycle not present"<<endl;
+// 	}
+// }
+
+
+// //detect cycle in directed graph
+// const int N=1e5+2;
+// bool iscycle(int index,vector<vector<int>>&adj,vector<bool>&visited,vector<int>&stack){
+// 	stack[index]=true;
+// 	if(!visited[index]){
+// 	for(auto it: adj[index]){
+// 			if(stack[it]){
+// 				return true;
+// 			}
+// 			if(!visited[it] && iscycle(it,adj,visited,stack)){
+// 				return true;
+// 			}
+// 	}
+// }
+// stack[index]=false;
+// 	return false;
+// }
+// int main(){
+// 	int n,m;
+// 	cin>>n>>m;
+// 	vector<vector<int>>adj(n);
+// 	for(int i=0;i<m;i++){
+// 		int x,y;
+// 		cin>>x>>y;
+// 		adj[x].push_back(y);
+// 	}
+// 	bool cycle=false;
+// 	vector<bool>visited(n,false);
+// 	vector<int>stack(n,0);
+// 	for(int i=0;i<n;i++){
+// 		if(!visited[i] && iscycle(i,adj,visited,stack)){
+// 			cycle= true;
+// 		}
+// 	}
+// 	if(cycle){
+// 		cout<<"cycle present"<<endl;
+// 	}else{
+// 		cout<<"cycle not present"<<endl;
+// 	}
+// }
+
+// //components size
+// int get_comp(int idx, vector<bool>&vis,vector<vector<int>>&adj){
+//    if(vis[idx]){
+//      return 0;
+//    }
+//    vis[idx]=1;
+//    int ans=1;
+//    for(auto it: adj[idx]){
+//    	if(!vis[it]){
+//    		ans+=get_comp(it,vis,adj);
+//    		vis[it]=true;
+//    	}
+   	
+//    }
+//    return ans;
+// }
+// int main(){
+// 	int n,m;
+// 	cin>>n>>m;
+// 	vector<vector<int>>adj(n);
+// 	vector<bool> vis(n,0);
+// 	vector<int>components;
+// 	for(int i=0;i<m;i++){
+// 		int x,y;
+// 		cin>>x>>y;
+// 		adj[x].push_back(y);
+// 		adj[y].push_back(x);
+// 	}
+// 	for(int i=0;i<n;i++){
+// 		if(!vis[i]){
+// 			components.push_back(get_comp(i,vis,adj));
+// 		}
+// 	}
+//     for(auto i: components){
+//     	cout<<i<<" ";
+//     }
+// }
+
+
+// //DSU detect cycle in undirected
+// const int N=1e5+2;
+// vector<int>parent(N);
+// vector<int>sz(N);
+// void make_set(int v){
+//   parent[v]=v;
+//   sz[v]=1;
+// }
+// int find_set(int v){
+//   if(v==parent[v]){
+//   	return v;
+//   }
+//   return parent[v]=find_set(parent[v]);
+// }
+// void union_set(int x,int y){
+//     x=find_set(x);
+//     y=find_set(y);
+//    if(x!=y){
+//      if(sz[x]<sz[y]){
+//      	swap(x,y);
+//      }
+//      parent[y]=x;
+//      sz[x]+=sz[y];
+//    }
+// }
+// int main(){
+//  int n,m;
+//  cin>>n>>m;
+//  for(int i=0;i<N;i++){
+//  	make_set(i);
+//  }
+//  vector<vector<int>>edges;
+//  for(int i=0;i<m;i++){
+//  	int x,y;
+//  	cin>>x>>y;
+//  	edges.push_back({x,y});
+//  }
+//  bool cycle =false;
+//  for(auto it: edges){
+//  	int u=it[0];
+//  	int v=it[1];
+//  	int x=find_set(u);
+//  	int y=find_set(v);
+//  	if(x==y){
+//  		cycle=true;
+//  	}
+//  	else{
+//  		union_set(x,y);
+//  	}
+//  }
+//  if(cycle){
+//  	cout<<"cycle present";
+//  }else{
+//  	cout<<"not present";
+//  }
+// }
+
+// //minimum spanning tree (mst) - subgrapg of a graph having all vertices from it.
+// // cost = sum of weight of edges
+// //mst used = minimum cost. (kruskals algo)
+// // to find - sort acc to weight then insert edges and skip edge if form cycle.
+// //TC - Elog(V), SC - o(E+V)
+
+// const int N=1e5+2;
+// vector<int>parent(N);
+// vector<int>sz(N);
+// void make_set(int v){
+//   parent[v]=v;
+//   sz[v]=1;
+// }
+// int find_set(int v){
+//   if(v==parent[v]){
+//   	return v;
+//   }
+//   return parent[v]=find_set(parent[v]);
+// }
+// void union_set(int x,int y){
+//     x=find_set(x);
+//     y=find_set(y);
+//    if(x!=y){
+//      if(sz[x]<sz[y]){
+//      	swap(x,y);
+//      }
+//      parent[y]=x;
+//      sz[x]+=sz[y];
+//    }
+// }
+// int main(){
+//  int n,m;
+//  cin>>n>>m;
+//  for(int i=0;i<N;i++){
+//  	make_set(i);
+//  }
+//  vector<vector<int>>edges;
+//  for(int i=0;i<m;i++){
+//  	int x,y,w;
+//  	cin>>x>>y>>w;
+//  	edges.push_back({w,x,y});
+//  }
+//  sort (edges.begin(),edges.end());
+//  int cost=0;
+//  for(auto it:edges){
+//  	int x=it[0];
+//  	int y=it[1];
+//  	int z=it[2];
+//  	int a=find_set(y);
+//  	int b=find_set(z);
+//     if(a==b){
+//     	continue;
+//     }
+//     else{
+//     	cost+=x;
+//     	cout<<y<<" "<<z<<endl;
+//         union_set(a,b);
+//     }
+//  }
+//  cout<<cost;
+// }
+
+
+// //Dikshtras algo - single source shortest path
+
+// const int inf=1e7;
+
+// int main(){
+// 	int n,m;
+// 	cin>>n>>m;
+// 	vector<int>dist(n+1,inf);
+// 	vector<vector<pair<int,int>>>graph(n+1);
+// 	for(int i=0;i<m;i++){
+//        int u,v,w;
+//        cin>>u>>v>>w;
+//        graph[u].push_back({v,w});
+//        graph[v].push_back({u,w});
+// 	}
+// 	int source;cin>>source;
+// 	dist[source]=0;
+// 	set<pair<int,int>>s;
+// 	s.insert({0,source});
+// 	while(!s.empty()){
+// 		auto x= *(s.begin());
+// 		s.erase(x);
+//         for(auto it : graph[x.second]){
+//         	if(dist[it.first]>it.second+dist[x.second]){
+//         		s.erase({dist[it.first],it.first});
+//                 dist[it.first]=it.second+dist[x.second];
+//                 s.insert({dist[it.first],it.first});
+//         	}
+//         }
+// 	}
+// 	for(int i=1;i<n;i++){
+// 		if(dist[i]<inf){
+// 			cout<<dist[i]<<" ";
+// 		}else{
+// 			cout<<-1;
+// 		}
+// 	}
+// }
+
+// //Bellman ford algo - max(n-1) passes - to find shortest dist b/w 2 vertices.
+
+// const int inf=1e9+7;
+
+// int main(){
+// 	int n,m;
+// 	cin>>n>>m;
+// 	vector<vector<int>>edges;
+// 	for(int i=0;i<m;i++){
+// 		int u,v,w;
+// 		cin>>u>>v>>w;
+// 		edges.push_back({u,v,w});
+// 	}
+// 	vector<int>dist(n,inf);
+// 	int src;cin>>src;
+// 	dist[src]=0;
+// 	for(int i=0;i<n-1;i++){
+// 		// bool change=false;    //to detect negetive cycle
+// 		for(auto it:edges){
+// 			int u=it[0];
+// 			int v=it[1];
+// 			int w=it[2];
+// 			// if(dist[v]>dist[u]+w){
+// 			// 	change=true;
+// 			// }
+// 			dist[v]=min(dist[v],dist[u]+w);
+// 		}
+// 	}
+// 	for(auto it: dist){
+// 		cout<<it<<" ";
+// 	}
+// }
+
+
+//floyed warsel - 
+
+const int inf=1e9+7;
+int main(){
+  vector<vector<int>>graph{{0,5,inf,10},
+                            {inf,0,3,inf},
+                            {inf,inf,0,1},
+                            {inf,inf,inf,0}};
+int n=graph.size();
+vector<vector<int>>dist=graph;
+for(int i=0;i<n;i++){
+	for(int j=0;j<n;j++){
+		for(int k=0;k<n;k++){
+			if(dist[i][k]+dist[k][j]<dist[i][j]){
+				dist[i][j]=dist[i][k]+dist[k][j];
+			}
+		}
+	}
+}
+
+for(int i=0;i<n;i++){
+	for(int j=0;j<n;j++){
+		if(dist[i][j]==inf){
+			cout<<"inf ";
+		}
+		else{
+			cout<<dist[i][j]<<" ";}
+	}
+	cout<<endl;
+}
+}
