@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool compare(vector<string>& a, vector<string>& b) {
+    return a[0].length() < b[0].length();
+}
+
+int main() {
+    vector<vector<string>> vec = {{"abc", "ab"}, {"ab", "bc"}, {"cdef", "c"}};
+
+    sort(vec.begin(), vec.end(), compare);
+
+    for(auto p : vec) {
+        cout << "{" << p[0] << ", " << p[1] << "}" << endl;
+    }
+
+    return 0;
+}
